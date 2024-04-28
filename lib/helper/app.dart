@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:restaurant_app/controller/auth/auth_controller.dart';
 import '../cache/cache.dart';
 import '../controller/theme/theme_controller.dart';
 
@@ -12,5 +13,6 @@ class App {
 class PreparerControllers {
   static Future<void> prepareController() async {
     Get.put(ThemeController());
+    Get.put(AuthController());
   }
 }
