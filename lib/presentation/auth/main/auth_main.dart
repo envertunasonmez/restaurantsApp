@@ -59,13 +59,13 @@ class AuthMainScreen extends StatelessWidget {
               //Create account button
               AppButton(
                 text: 'Create Account',
-                onTap: () {},
+                onTap: () => AppBottomSheet.showCreateAccountBottomSheet(),
               ),
               2.yh,
               //Log in button
               AppButton(
                 text: 'Login',
-                onTap: () => AppBottomSheet.showAuthBottomSheet(),
+                onTap: () => AppBottomSheet.showLogInBottomSheet(),
                 backgroundColor: ColorConstants.lightPrimary,
                 textColor: Get.theme.colorScheme.primary,
               ),
