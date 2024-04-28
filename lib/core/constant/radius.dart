@@ -1,5 +1,5 @@
 class AppRadius {
-  static double get buttonRadius => 32.0;
+  static double get buttonRadius => 16.0;
 
   static double get inputFieldRadius => 8.0;
 
