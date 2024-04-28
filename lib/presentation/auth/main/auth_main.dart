@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/constant/static_asset.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
+import 'package:restaurant_app/helper/bottom_sheet/modal_bottom_sheet.dart';
 import 'package:restaurant_app/presentation/base/base_screen.dart';
 
 import '../../../widget_modal/button/button.dart';
@@ -64,7 +65,7 @@ class AuthMainScreen extends StatelessWidget {
               //Log in button
               AppButton(
                 text: 'Login',
-                onTap: () {},
+                onTap: () => AppBottomSheet.showAuthBottomSheet(),
                 backgroundColor: ColorConstants.lightPrimary,
                 textColor: Get.theme.colorScheme.primary,
               ),

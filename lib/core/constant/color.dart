@@ -11,4 +11,6 @@ class ColorConstants {
   static Color blue = const Color(0xFF1B8ADC);
   static Color fire = const Color(0xFFFD9820);
   static Color energy = const Color(0xFFFEC02E);
+  static Color inputTitleColor = const Color(0xFF374151);
+
 }
