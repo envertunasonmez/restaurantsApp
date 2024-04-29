@@ -3,7 +3,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
-import 'package:restaurant_app/presentation/auth/main/auth_main.dart';
+import 'package:restaurant_app/presentation/auth/forget_password/success_page.dart';
+
 import 'package:restaurant_app/widget_modal/button/button.dart';
 import 'package:restaurant_app/widget_modal/input_field/input_field.dart';
 
@@ -63,7 +64,9 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
               padding: 36.pAll,
               child: AppButton(
                 text: 'Submit',
-                onTap: () {},
+                onTap: () {
+                  Get.to(const SuccessPage());
+                },
                 isInActive: true,
               ),
             ),
@@ -73,7 +76,5 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
     );
   }
 
-  void createNewPasswordSubmit() {
-    Get.to(const AuthMainScreen());
-  }
+  void createNewPasswordSubmit() {}
 }

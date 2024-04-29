@@ -77,7 +77,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
               child: AppButton(
                 text: 'Submit',
                 onTap: () {
-                  Get.to(BackEmailPage());
+                  Get.to(const BackEmailPage());
                 },
                 isInActive: true,
               ),
@@ -89,6 +89,6 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   }
 
   void onTapSignIn() {
-    Get.to(AuthMainScreen());
+    Get.to(const AuthMainScreen());
   }
 }
