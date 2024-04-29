@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
+import 'package:restaurant_app/presentation/auth/forget_password/change_password.dart';
 import 'package:restaurant_app/presentation/auth/forget_password/forget_password.dart';
 
 import 'package:restaurant_app/widget_modal/button/button.dart';
@@ -56,7 +57,9 @@ class BackEmailPage extends StatelessWidget {
               padding: 36.pAll,
               child: AppButton(
                 text: 'Back Email',
-                onTap: () {},
+                onTap: () {
+                  Get.to(const ChangeNewPassword());
+                },
               ),
             ),
           ],
@@ -66,6 +69,6 @@ class BackEmailPage extends StatelessWidget {
   }
 
   void reSubmit() {
-    Get.to(ForgetPasswordPage());
+    Get.to(const ForgetPasswordPage());
   }
 }
