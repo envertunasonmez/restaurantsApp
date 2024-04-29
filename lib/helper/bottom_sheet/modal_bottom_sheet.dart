@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/controller/auth/auth_controller.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
+import 'package:restaurant_app/presentation/auth/forget_password/forget_password.dart';
 import 'package:restaurant_app/widget_modal/button/button.dart';
 import '../../core/constant/radius.dart';
 import '../../widget_modal/bottom_sheet/category/category.dart';
@@ -178,7 +179,7 @@ class AppBottomSheet {
                           2.yh,
                           GestureDetector(
                             onTap: () {
-                              print('tıklandı');
+                              Get.to(const ForgetPasswordPage());
                             },
                             child: Padding(
                               padding: 160.pLeft,
