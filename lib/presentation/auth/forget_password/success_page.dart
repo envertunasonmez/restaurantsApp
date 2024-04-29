@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/core/constant/color.dart';
@@ -7,8 +6,8 @@ import 'package:restaurant_app/presentation/auth/forget_password/forget_password
 import 'package:restaurant_app/presentation/auth/main/auth_main.dart';
 import 'package:restaurant_app/widget_modal/button/button.dart';
 
-class BackEmailPage extends StatelessWidget {
-  const BackEmailPage({super.key});
+class SuccessPage extends StatelessWidget {
+  const SuccessPage({super.key});
 
   @override
   Widget build(BuildContext context) {
