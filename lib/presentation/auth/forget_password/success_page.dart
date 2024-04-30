@@ -17,7 +17,8 @@ class SuccessPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            40.yh,
+            32.yh,
+            Image.asset('assets/icons/success_icon.png'),
             Text(
               'Success',
               style: Get.theme.textTheme.bodyMedium!.copyWith(

@@ -65,7 +65,7 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
               child: AppButton(
                 text: 'Submit',
                 onTap: () {
-                  Get.to(const SuccessPage());
+                  Get.to(SuccessPage());
                 },
                 isInActive: true,
               ),
