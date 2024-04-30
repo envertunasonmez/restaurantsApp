@@ -179,7 +179,7 @@ class AppBottomSheet {
                           2.yh,
                           GestureDetector(
                             onTap: () {
-                              Get.to(const ForgetPasswordPage());
+                              Get.to(ForgetPasswordPage());
                             },
                             child: Padding(
                               padding: 160.pLeft,

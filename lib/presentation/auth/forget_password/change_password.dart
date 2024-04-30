@@ -3,7 +3,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
-import 'package:restaurant_app/presentation/auth/forget_password/success_page.dart';
+import 'package:restaurant_app/presentation/auth/forget_password/success.dart';
 
 import 'package:restaurant_app/widget_modal/button/button.dart';
 import 'package:restaurant_app/widget_modal/input_field/input_field.dart';
@@ -52,7 +52,7 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
             2.yh,
             AppInputField(
               controller: createNewPassword,
-              title: 'Confarm Password',
+              title: 'Confirm Password',
               hint: '***** ****** *****',
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),
@@ -75,6 +75,4 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
       ),
     );
   }
-
-  void createNewPasswordSubmit() {}
 }
