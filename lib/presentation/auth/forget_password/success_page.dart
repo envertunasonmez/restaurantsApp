@@ -4,6 +4,7 @@ import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
 import 'package:restaurant_app/presentation/auth/forget_password/forget_password.dart';
 import 'package:restaurant_app/presentation/auth/main/auth_main.dart';
+import 'package:restaurant_app/presentation/base/onboarding_screens/onboarding_first_screen.dart';
 import 'package:restaurant_app/widget_modal/button/button.dart';
 
 class SuccessPage extends StatelessWidget {
@@ -36,7 +37,7 @@ class SuccessPage extends StatelessWidget {
               child: AppButton(
                 text: 'Sign In',
                 onTap: () {
-                  Get.to(const AuthMainScreen());
+                  Get.to(const OnboardingPageFirst());
                 },
               ),
             ),
