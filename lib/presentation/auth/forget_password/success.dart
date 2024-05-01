@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/core/constant/color.dart';
+import 'package:restaurant_app/core/constant/static_asset.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
 import 'package:restaurant_app/presentation/auth/forget_password/forget_password.dart';
+import 'package:restaurant_app/presentation/auth/main/auth_main.dart';
+
 import 'package:restaurant_app/widget_modal/button/button.dart';
 
-import '../../onboarding/first_screen.dart';
-
-class SuccessPage extends StatelessWidget {
-  const SuccessPage({super.key});
+class SuccessScreen extends StatelessWidget {
+  const SuccessScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class SuccessPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             32.yh,
-            Image.asset('assets/icons/success_icon.png'),
+            Image.asset(StaticAssets.success),
             Text(
               'Success',
               style: Get.theme.textTheme.bodyMedium!.copyWith(
@@ -37,7 +38,7 @@ class SuccessPage extends StatelessWidget {
               child: AppButton(
                 text: 'Sign In',
                 onTap: () {
-                  Get.to(const OnBoardingPageFirst());
+                  Get.to(const AuthMainScreen());
                 },
               ),
             ),

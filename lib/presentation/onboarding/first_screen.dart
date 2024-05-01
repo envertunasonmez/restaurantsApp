@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
@@ -23,7 +22,9 @@ class OnBoardingPageFirst extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: GestureDetector(
-              onTap: ()=>Get.toNamed(AppPages.authMain,),
+              onTap: () => Get.toNamed(
+                AppPages.authMain,
+              ),
               child: Text(
                 'Skip',
                 style: Get.theme.textTheme.labelSmall!.copyWith(
