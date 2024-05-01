@@ -9,6 +9,7 @@ import 'package:restaurant_app/route/routes.dart';
 import 'package:restaurant_app/widget_modal/button/button.dart';
 import 'package:restaurant_app/widget_modal/input_field/input_field.dart';
 
+// ignore: must_be_immutable
 class ForgetPasswordPage extends StatelessWidget {
   ForgetPasswordPage({super.key});
 

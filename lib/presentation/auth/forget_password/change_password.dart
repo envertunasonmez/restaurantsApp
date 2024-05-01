@@ -3,7 +3,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
-import 'package:restaurant_app/presentation/auth/forget_password/success.dart';
+
+import 'package:restaurant_app/route/routes.dart';
 
 import 'package:restaurant_app/widget_modal/button/button.dart';
 import 'package:restaurant_app/widget_modal/input_field/input_field.dart';
@@ -46,7 +47,7 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
               hint: '***** ****** *****',
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),
-                FormBuilderValidators.email(),
+                FormBuilderValidators.minLength(6),
               ]),
             ),
             2.yh,
@@ -56,7 +57,7 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
               hint: '***** ****** *****',
               validator: FormBuilderValidators.compose([
                 FormBuilderValidators.required(),
-                FormBuilderValidators.email(),
+                FormBuilderValidators.minLength(6),
               ]),
             ),
             36.yh,
@@ -65,7 +66,7 @@ class _ChangeNewPasswordState extends State<ChangeNewPassword> {
               child: AppButton(
                 text: 'Submit',
                 onTap: () {
-                  Get.to(SuccessPage());
+                  Get.toNamed(AppPages.successScreen);
                 },
                 isInActive: true,
               ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:restaurant_app/presentation/auth/forget_password/forget_password.dart';
+
 import 'package:restaurant_app/presentation/onboarding/first_screen.dart';
 import 'package:restaurant_app/route/routes.dart';
 
@@ -18,7 +18,7 @@ void main() async {
       GetMaterialApp(
         title: 'Restaurant App',
         debugShowCheckedModeBanner: false,
-        home: ForgetPasswordPage(),
+        home: const OnBoardingPageFirst(),
         theme: themeController.lightTheme,
         routes: AppRoutes.routes,
       ),
