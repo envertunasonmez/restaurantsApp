@@ -9,6 +9,8 @@ class StaticAssets{
   //icon
   static String arrowLeft = 'assets/icons/ic_arrow_left.svg';
   static String arrowRight = 'assets/icons/ic_arrow_right.svg';
+  static String eye = 'assets/icons/ic_eye.svg';
+  static String secureEye = 'assets/icons/ic_no_eye.svg';
 
 
 }

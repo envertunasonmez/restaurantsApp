@@ -14,14 +14,18 @@ class AppInputField extends StatelessWidget {
     this.validator,
     this.keyboardType,
     this.isObscure,
+    this.suffix,
+    this.onChanged,
   });
 
   final TextEditingController controller;
   final String title;
   final String hint;
   final String? Function(String?)? validator;
+  final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final bool? isObscure;
+  final Widget? suffix;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +43,7 @@ class AppInputField extends StatelessWidget {
         ),
         1.yh,
         TextFormField(
+          onChanged: onChanged,
           keyboardType: keyboardType ?? TextInputType.text,
           controller: controller,
           cursorHeight: 2.h,
@@ -47,11 +52,15 @@ class AppInputField extends StatelessWidget {
           ),
           obscureText: isObscure ?? false,
           decoration: InputDecoration(
-            isDense: true,
+            suffixIcon: suffix,
+            isDense: false,
             contentPadding: 4.w.pAll,
             hintText: hint,
             hintStyle: Get.theme.textTheme.labelSmall!.copyWith(
               color: ColorConstants.grey.withOpacity(0.4),
+            ),
+            errorStyle: Get.theme.textTheme.labelSmall!.copyWith(
+              color: Get.theme.colorScheme.error,
             ),
             border: AppStyleHelper.inputBorderStyle(),
             focusedBorder: AppStyleHelper.inputBorderStyle(),
@@ -59,7 +68,7 @@ class AppInputField extends StatelessWidget {
             constraints: BoxConstraints(
               minWidth: 100.w,
               minHeight: 2.h,
-              maxHeight: 6.h,
+              maxHeight: 12.h,
             ),
           ),
           validator: validator,
