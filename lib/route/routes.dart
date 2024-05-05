@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_app/presentation/auth/forget_password/forget_password.dart';
 
 import 'package:restaurant_app/presentation/auth/forget_password/success.dart';
 import 'package:restaurant_app/presentation/auth/main/auth_main.dart';
@@ -16,6 +17,7 @@ class AppRoutes {
     AppPages.onBoardingPageThird: (_) => const OnBoardingPageThird(),
     AppPages.backEmailScreen: (_) => const BackEmailScreen(),
     AppPages.successScreen: (_) => const SuccessScreen(),
+    AppPages.forgetPassword: (_) => ForgetPasswordPage(),
   };
 }
 
@@ -24,6 +26,7 @@ class AppPages {
   static String onBoardingPageFirst = '/onBoardingPageFirst';
   static String onBoardingPageSecond = '/onBoardingPageSecond';
   static String onBoardingPageThird = '/onBoardingPageThird';
+  static String forgetPassword = '/forgetPassword';
   static String backEmailScreen = '/backEmailScreen';
   static String successScreen = '/successScreen';
 }

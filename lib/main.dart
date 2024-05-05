@@ -12,6 +12,9 @@ void main() async {
   //App controllers and cache have been initializing here
   await App.init();
   final themeController = Get.put(ThemeController());
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   Future.delayed(
     10.milliseconds,
     () => runApp(
