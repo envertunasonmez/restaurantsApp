@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:restaurant_app/controller/base/base_controller.dart';
 
 class AuthController extends BaseController {
-  //Log In
+  //Create Account
   TextEditingController fullNameTextController = TextEditingController();
   TextEditingController logInEmailTextController = TextEditingController();
   TextEditingController logInPasswordTextController = TextEditingController();
 
-  //Create Account
+  //Log In
   TextEditingController signUpEmailTextController = TextEditingController();
   TextEditingController signUpPasswordTextController = TextEditingController();
 
@@ -15,12 +15,31 @@ class AuthController extends BaseController {
 
   //Log In FormKey
   final logInFormKey = GlobalKey<FormState>();
+  final createAccountKey = GlobalKey<FormState>();
 
-  void createAccount() {}
+  void createAccount() {
+    createAccountKey.currentState?.save();
+    if ((createAccountKey.currentState?.validate() ?? false) &&
+        isInActiveButtonCreateAcc() == false) {
+      print('KAYIT GERÇEKLEŞTİ');
+    } else {
+      print('KAYIT PROBLEM!!!');
+    }
+  }
+
+  bool isInActiveButtonCreateAcc() {
+    bool value = !(fullNameTextController.text.isNotEmpty &&
+        logInEmailTextController.text.isNotEmpty &&
+        logInPasswordTextController.text.isNotEmpty);
+
+    updateListeners();
+    return value;
+  }
 
   bool isInActiveButton() {
-    bool value = !(logInEmailTextController.text.isNotEmpty &&
-        logInPasswordTextController.text.isNotEmpty);
+    bool value = !(signUpEmailTextController.text.isNotEmpty &&
+        signUpPasswordTextController.text.isNotEmpty);
+
     updateListeners();
     return value;
   }

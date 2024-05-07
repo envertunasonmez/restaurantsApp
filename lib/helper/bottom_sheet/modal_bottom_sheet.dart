@@ -7,6 +7,7 @@ import 'package:restaurant_app/controller/auth/auth_controller.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/constant/static_asset.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
+
 import 'package:restaurant_app/route/routes.dart';
 import 'package:restaurant_app/widget_modal/button/button.dart';
 import '../../core/constant/radius.dart';
@@ -71,47 +72,70 @@ class AppBottomSheet {
                       ),
                       4.yh,
                       Form(
+                          key: ac.createAccountKey,
                           child: Column(
-                        children: [
-                          AppInputField(
-                            controller: ac.fullNameTextController,
-                            title: 'Full Name',
-                            hint: 'Enter your full name',
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(),
-                            ]),
-                          ),
-                          2.yh,
-                          AppInputField(
-                            controller: ac.logInEmailTextController,
-                            title: 'Email address',
-                            hint: 'example@gmail.com',
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(),
-                              FormBuilderValidators.email(),
-                            ]),
-                          ),
-                          2.yh,
-                          AppInputField(
-                            controller: ac.logInPasswordTextController,
-                            title: 'Password',
-                            hint: '***** ****** *****',
-                            validator: FormBuilderValidators.compose([
-                              FormBuilderValidators.required(),
-                              FormBuilderValidators.minLength(6),
-                            ]),
-                          ),
-                          4.yh,
-                          Padding(
-                            padding: 8.w.pH,
-                            child: AppButton(
-                              text: 'Registration',
-                              onTap: () {},
-                              isInActive: true,
-                            ),
-                          ),
-                        ],
-                      ))
+                            children: [
+                              AppInputField(
+                                controller: ac.fullNameTextController,
+                                title: 'Full Name',
+                                hint: 'Enter your full name',
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(),
+                                ]),
+                              ),
+                              2.yh,
+                              AppInputField(
+                                controller: ac.logInEmailTextController,
+                                title: 'Email address',
+                                hint: 'example@gmail.com',
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(),
+                                  FormBuilderValidators.email(),
+                                ]),
+                                onChanged: (email) {
+                                  ac.isInActiveButton();
+                                },
+                              ),
+                              2.yh,
+                              AppInputField(
+                                controller: ac.logInPasswordTextController,
+                                title: 'Password',
+                                hint: '***** ****** *****',
+                                isObscure: ac.isObscure,
+                                validator: FormBuilderValidators.compose([
+                                  FormBuilderValidators.required(),
+                                  FormBuilderValidators.minLength(6),
+                                ]),
+                                suffix: GestureDetector(
+                                  onTap: () => ac.toggleObscure(),
+                                  child: Padding(
+                                    padding: 1.h.pAll,
+                                    child: SvgPicture.asset(
+                                      ac.isObscure
+                                          ? StaticAssets.eye
+                                          : StaticAssets.secureEye,
+                                      colorFilter: ColorFilter.mode(
+                                        Get.theme.colorScheme.primary,
+                                        BlendMode.srcIn,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                onChanged: (password) {
+                                  ac.isInActiveButton();
+                                },
+                              ),
+                              4.yh,
+                              Padding(
+                                padding: 8.w.pH,
+                                child: AppButton(
+                                  text: 'Registration',
+                                  onTap: () => ac.createAccount(),
+                                  isInActive: ac.isInActiveButtonCreateAcc(),
+                                ),
+                              ),
+                            ],
+                          ))
                     ],
                   ),
                 ),
@@ -182,7 +206,7 @@ class AppBottomSheet {
                           child: Column(
                             children: [
                               AppInputField(
-                                controller: ac.logInEmailTextController,
+                                controller: ac.signUpEmailTextController,
                                 title: 'Email address',
                                 hint: 'example@gmail.com',
                                 validator: FormBuilderValidators.compose([
@@ -195,7 +219,7 @@ class AppBottomSheet {
                               ),
                               2.yh,
                               AppInputField(
-                                controller: ac.logInPasswordTextController,
+                                controller: ac.signUpPasswordTextController,
                                 title: 'Password',
                                 hint: '***** ****** *****',
                                 isObscure: ac.isObscure,
