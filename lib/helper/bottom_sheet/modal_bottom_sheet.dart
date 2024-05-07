@@ -7,7 +7,6 @@ import 'package:restaurant_app/controller/auth/auth_controller.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/constant/static_asset.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
-import 'package:restaurant_app/presentation/auth/forget_password/forget_password.dart';
 import 'package:restaurant_app/route/routes.dart';
 import 'package:restaurant_app/widget_modal/button/button.dart';
 import '../../core/constant/radius.dart';
