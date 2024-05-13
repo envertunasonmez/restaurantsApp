@@ -85,7 +85,7 @@ class AppBottomSheet {
                               ),
                               2.yh,
                               AppInputField(
-                                controller: ac.logInEmailTextController,
+                                controller: ac.signUpEmailTextController,
                                 title: 'Email address',
                                 hint: 'example@gmail.com',
                                 validator: FormBuilderValidators.compose([
@@ -98,7 +98,7 @@ class AppBottomSheet {
                               ),
                               2.yh,
                               AppInputField(
-                                controller: ac.logInPasswordTextController,
+                                controller: ac.signUpPasswordTextController,
                                 title: 'Password',
                                 hint: '***** ****** *****',
                                 isObscure: ac.isObscure,
@@ -130,7 +130,7 @@ class AppBottomSheet {
                                 padding: 8.w.pH,
                                 child: AppButton(
                                   text: 'Registration',
-                                  onTap: () => ac.createAccount(),
+                                  onTap: () async => await ac.createAccount(),
                                   isInActive: ac.isInActiveButtonCreateAcc(),
                                 ),
                               ),
@@ -206,7 +206,7 @@ class AppBottomSheet {
                           child: Column(
                             children: [
                               AppInputField(
-                                controller: ac.signUpEmailTextController,
+                                controller: ac.logInEmailTextController,
                                 title: 'Email address',
                                 hint: 'example@gmail.com',
                                 validator: FormBuilderValidators.compose([
@@ -219,7 +219,7 @@ class AppBottomSheet {
                               ),
                               2.yh,
                               AppInputField(
-                                controller: ac.signUpPasswordTextController,
+                                controller: ac.logInPasswordTextController,
                                 title: 'Password',
                                 hint: '***** ****** *****',
                                 isObscure: ac.isObscure,
@@ -268,7 +268,7 @@ class AppBottomSheet {
                                 padding: 8.w.pH,
                                 child: AppButton(
                                   text: 'Login',
-                                  onTap: () => ac.logIn(),
+                                  onTap: () async => await ac.logIn(),
                                   isInActive: ac.isInActiveButton(),
                                 ),
                               ),

@@ -18,6 +18,8 @@ dependencies:
   hive: ^2.2.3
   form_builder_validators: ^9.1.0
   flutter_svg: ^2.0.10+1
+  firebase_core: ^2.31.0
+  firebase_auth: ^4.19.5
 
 dev_dependencies:
   flutter_test:
