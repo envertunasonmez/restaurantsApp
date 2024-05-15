@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_app/presentation/account/account_screen.dart';
 
 import 'package:restaurant_app/presentation/onboarding/first_screen.dart';
 import 'package:restaurant_app/route/routes.dart';
@@ -23,7 +24,7 @@ void main() async {
       GetMaterialApp(
         title: 'Restaurant App',
         debugShowCheckedModeBanner: false,
-        home: const OnBoardingPageFirst(),
+        home: const AccountScreen(),
         theme: themeController.lightTheme,
         routes: AppRoutes.routes,
       ),
