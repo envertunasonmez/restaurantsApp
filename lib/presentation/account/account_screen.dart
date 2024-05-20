@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
 import 'package:restaurant_app/presentation/base/base_screen.dart';
-import 'package:restaurant_app/widget_modal/account/account_cards/cards_modal.dart';
+import 'package:restaurant_app/widget_modal/account/cards_modal.dart';
 import 'package:restaurant_app/widget_modal/button/button.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -17,11 +17,11 @@ class AccountScreen extends StatelessWidget {
         mobile: Column(
           children: [
             4.yh,
-            profileBar(),
+            const ProfileBar(),
             6.yh,
-            accountSettings(),
+            const AccountSettings(),
             2.yh,
-            appInformation(),
+            const AppInformation(),
             4.yh,
             SizedBox(
               height: 4.h,
