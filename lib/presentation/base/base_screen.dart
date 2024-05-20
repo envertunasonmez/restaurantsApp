@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_app/core/constant/radius.dart';
 import 'package:restaurant_app/core/constant/static_asset.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
 import '../../core/constant/padding.dart';
@@ -41,6 +42,40 @@ class BaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+        height: 8.h,
+        width: 100.w,
+        decoration: BoxDecoration(
+          color: Get.theme.colorScheme.secondary,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(
+              AppRadius.cardRadius,
+            ),
+            topRight: Radius.circular(
+              AppRadius.cardRadius,
+            ),
+          ),
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                SvgPicture.asset(
+                  StaticAssets.home,
+                ),
+                SvgPicture.asset(
+                  StaticAssets.bookingHistory,
+                ),
+                SvgPicture.asset(
+                  StaticAssets.profile,
+                ),
+              ],
+            ),
+            2.yh,
+          ],
+        ),
+      ),
       appBar: hasAppBar!
           ? AppBar(
               title: Text(

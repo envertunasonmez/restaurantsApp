@@ -25,6 +25,9 @@ class StaticAssets{
   static String secureEye = 'assets/icons/ic_no_eye.svg';
   static String seeAllArrow = 'assets/icons/ic_right_arrow.svg';
   static String location = 'assets/icons/ic_location.svg';
+  static String home = 'assets/icons/ic_home.svg';
+  static String profile = 'assets/icons/ic_profile.svg';
+  static String bookingHistory = 'assets/icons/ic_booking_history.svg';
 
 
 }
