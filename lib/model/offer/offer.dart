@@ -24,9 +24,9 @@ class Offer {
     id = json['id'];
     colorHexCode1 = json['colorHexCode1'];
     imageName = json['imageName'];
-    imageNetworkPath = json['imageNetworkPath'];
+    imageNetworkPath = '';
     logoName = json['logoName'];
-    logoNetworkPath = json['logoNetworkPath'];
+    logoNetworkPath = '';
     colorHexCode2 = json['colorHexCode2'];
     subtitle = json['subtitle'];
     title = json['title'];

@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/controller/auth/auth_controller.dart';
@@ -98,9 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     '',
                                                 height: 3.h,
                                               ),
-                                              SizedBox(
-                                                width: 30.w,
-                                                child: Expanded(
+                                              Expanded(
+                                                child: SizedBox(
+                                                  width: 30.w,
                                                   child: Text(
                                                     ac.offerList[index].title ??
                                                         '',
@@ -115,9 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              SizedBox(
-                                                width: 40.w,
-                                                child: Expanded(
+                                              Expanded(
+                                                child: SizedBox(
+                                                  width: 40.w,
                                                   child: Text(
                                                     ac.offerList[index]
                                                             .subtitle ??
