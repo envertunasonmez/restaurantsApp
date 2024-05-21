@@ -1,8 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/controller/auth/auth_controller.dart';
@@ -31,11 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
       await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
-      final gsReference = FirebaseStorage.instance
-          .refFromURL("gs://restaurant-app-86fbc.appspot.com");
-      String url =
-          await gsReference.child("/chicken_biryani.png").getDownloadURL();
-      print(url);
+      await ac.getOffers();
     });
     super.initState();
   }
@@ -47,78 +40,119 @@ class _HomeScreenState extends State<HomeScreen> {
     return BaseScreen(
         hasAppBar: true,
         hasScrollable: true,
+        isLoading: ac.isLoading,
         mobile: Column(
           children: [
             2.yh,
-            SizedBox(
-              height: 18.h,
-              width: 100.w,
-              child: ListView.builder(
-                  itemCount: 5,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (_, index) {
-                    return Padding(
-                      padding: 4.w.pAll,
-                      child: Stack(
-                        children: [
-                          Container(
-                            width: 70.w,
-                            height: 16.h,
-                            decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  Color(0xFFFF9F06),
-                                  Color(0xFFFFE1B4),
-                                ],
-                              ),
-                              borderRadius: BorderRadius.circular(
-                                AppRadius.cardRadius * 3,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: 4.w.pAll,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    StaticAssets.burgerKingLogo,
-                                  ),
-                                  Text(
-                                    'Flash Offer',
-                                    style: Get.theme.textTheme.labelMedium!
-                                        .copyWith(
-                                      color: Get.theme.colorScheme.secondary,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 40.w,
-                                    child: Text(
-                                      'We are here with the best deserts intown.',
-                                      style: Get.theme.textTheme.labelSmall!
-                                          .copyWith(
-                                        color: Get.theme.colorScheme.secondary,
+            GetBuilder<AuthController>(
+                id: 'authController',
+                builder: (ac) {
+                  return ac.isLoading
+                      ? Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : SizedBox(
+                          height: 18.h,
+                          width: 100.w,
+                          child: ListView.builder(
+                              itemCount: ac.offerList.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (_, index) {
+                                return Padding(
+                                  padding: 3.w.pAll,
+                                  child: Stack(
+                                    children: [
+                                      Container(
+                                        width: 70.w,
+                                        height: 16.h,
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                            colors: [
+                                              Color(
+                                                int.parse(ac.offerList[index]
+                                                        .colorHexCode1 ??
+                                                    '0xFFFFFF'),
+                                              ),
+                                              Color(
+                                                int.parse(ac.offerList[index]
+                                                        .colorHexCode2 ??
+                                                    '0xFFFFFF'),
+                                              ),
+                                            ],
+                                          ),
+                                          borderRadius: BorderRadius.circular(
+                                            AppRadius.cardRadius * 3,
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding: 3.w.pAll,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Image.network(
+                                                ac.offerList[index]
+                                                        .logoNetworkPath ??
+                                                    '',
+                                                height: 3.h,
+                                              ),
+                                              SizedBox(
+                                                width: 30.w,
+                                                child: Expanded(
+                                                  child: Text(
+                                                    ac.offerList[index].title ??
+                                                        '',
+                                                    style: Get.theme.textTheme
+                                                        .labelMedium!
+                                                        .copyWith(
+                                                      color: Get
+                                                          .theme
+                                                          .colorScheme
+                                                          .secondary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: 40.w,
+                                                child: Expanded(
+                                                  child: Text(
+                                                    ac.offerList[index]
+                                                            .subtitle ??
+                                                        '',
+                                                    style: Get.theme.textTheme
+                                                        .labelSmall!
+                                                        .copyWith(
+                                                      color: Get
+                                                          .theme
+                                                          .colorScheme
+                                                          .secondary,
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: -12.w,
-                            bottom: 0,
-                            child: Image.asset(
-                              StaticAssets.hamburger,
-                              height: 28.w,
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  }),
-            ),
+                                      Positioned(
+                                        right: -12.w,
+                                        bottom: 0,
+                                        child: Image.network(
+                                          ac.offerList[index]
+                                                  .imageNetworkPath ??
+                                              '',
+                                          height: 28.w,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }),
+                        );
+                }),
             2.yh,
             Row(
               children: [
