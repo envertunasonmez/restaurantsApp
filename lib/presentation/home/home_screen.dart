@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,13 +12,38 @@ import 'package:restaurant_app/core/constant/static_asset.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
 import 'package:restaurant_app/presentation/base/base_screen.dart';
 
+import '../../firebase_options.dart';
+
 var ac = Get.find<AuthController>();
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    Future.delayed(1.seconds, () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      final gsReference = FirebaseStorage.instance
+          .refFromURL("gs://restaurant-app-86fbc.appspot.com");
+      String url =
+          await gsReference.child("/chicken_biryani.png").getDownloadURL();
+      print(url);
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    // Create a storage reference from our app
+
     return BaseScreen(
         hasAppBar: true,
         hasScrollable: true,
@@ -167,6 +194,7 @@ class HomeScreen extends StatelessWidget {
                               child: Image.asset(
                                 StaticAssets.chickenBiryani,
                               ),
+                              //Image.network(src),
                             ),
                             2.yh,
                             Text(
