@@ -26,7 +26,7 @@ class AccountSettings extends StatelessWidget {
         ),
       ),
       child: RowOnTap(
-          rowIcon: StaticAssets.profile,
+          rowIcon: StaticAssets.selectedProfile,
           rowText: 'Account Settings',
           rowArrow: StaticAssets.edit),
     );

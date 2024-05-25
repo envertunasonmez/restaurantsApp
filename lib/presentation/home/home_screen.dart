@@ -40,8 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
     // Create a storage reference from our app
 
     return BaseScreen(
-        hasAppBar: true,
+        hasScreenDefaultPadding: true,
         hasScrollable: true,
+        hasAppBar: true,
         isLoading: ac.isLoading,
         mobile: Column(
           children: [
@@ -308,87 +309,92 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: 5,
                   shrinkWrap: true,
                   itemBuilder: (_, index) {
-                    return Container(
-                      margin: 4.w.pBottom,
-                      height: 12.h,
-                      width: 46.w,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Get.theme.colorScheme.primary,
+                    return GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        margin: 4.w.pBottom,
+                        height: 12.h,
+                        width: 46.w,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Get.theme.colorScheme.primary,
+                          ),
+                          borderRadius: BorderRadius.circular(
+                            AppRadius.cardRadius * 2,
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(
-                          AppRadius.cardRadius * 2,
-                        ),
-                      ),
-                      child: SizedBox(
-                        height: 8.h,
-                        width: 60.w,
-                        child: Row(
-                          children: [
-                            4.xw,
-                            Padding(
-                              padding: 4.w.pAll,
-                              child: Image.asset(
-                                StaticAssets.restaurant,
+                        child: SizedBox(
+                          height: 8.h,
+                          width: 60.w,
+                          child: Row(
+                            children: [
+                              4.xw,
+                              Padding(
+                                padding: 4.w.pAll,
+                                child: Image.asset(
+                                  StaticAssets.restaurant,
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Hotel Zaman Restaurant',
-                                    style: Get.theme.textTheme.labelMedium!
-                                        .copyWith(
-                                      color: ColorConstants.black,
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Hotel Zaman Restaurant',
+                                      style: Get.theme.textTheme.labelMedium!
+                                          .copyWith(
+                                        color: ColorConstants.black,
+                                      ),
                                     ),
-                                  ),
-                                  1.yh,
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(
-                                        StaticAssets.location,
-                                        height: 4.w,
-                                      ),
-                                      2.xw,
-                                      SizedBox(
-                                        width: 32.w,
-                                        child: Text(
-                                          'Ambrosia Hotel & Restaurant',
-                                          style: Get.theme.textTheme.labelSmall!
-                                              .copyWith(
-                                            color: ColorConstants.grey,
-                                          ),
+                                    1.yh,
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          StaticAssets.location,
+                                          height: 4.w,
                                         ),
-                                      ),
-                                      Container(
-                                        height: 3.h,
-                                        width: 20.w,
-                                        decoration: BoxDecoration(
-                                          color: Get.theme.colorScheme.primary,
-                                          borderRadius: BorderRadius.circular(
-                                            AppRadius.cardRadius,
-                                          ),
-                                        ),
-                                        child: Center(
+                                        2.xw,
+                                        SizedBox(
+                                          width: 32.w,
                                           child: Text(
-                                            'Book',
+                                            'Ambrosia Hotel & Restaurant',
                                             style: Get
                                                 .theme.textTheme.labelSmall!
                                                 .copyWith(
-                                              color: Get
-                                                  .theme.colorScheme.secondary,
+                                              color: ColorConstants.grey,
                                             ),
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                ],
+                                        Container(
+                                          height: 3.h,
+                                          width: 20.w,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                Get.theme.colorScheme.primary,
+                                            borderRadius: BorderRadius.circular(
+                                              AppRadius.cardRadius,
+                                            ),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              'Book',
+                                              style: Get
+                                                  .theme.textTheme.labelSmall!
+                                                  .copyWith(
+                                                color: Get.theme.colorScheme
+                                                    .secondary,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     );

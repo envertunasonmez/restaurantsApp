@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/presentation/auth/main/auth_main.dart';
 import 'package:restaurant_app/presentation/home/home_screen.dart';
+import 'package:restaurant_app/presentation/main/main_screen.dart';
+import 'package:restaurant_app/presentation/restaurant_detail/restaurant_detail_screen.dart';
 import 'package:restaurant_app/route/routes.dart';
 
 import 'controller/theme/theme_controller.dart';
@@ -23,7 +25,7 @@ void main() async {
       GetMaterialApp(
         title: 'Restaurant App',
         debugShowCheckedModeBanner: false,
-        home: const HomeScreen(),
+        home:  MainScreen(),
         theme: themeController.lightTheme,
         routes: AppRoutes.routes,
       ),

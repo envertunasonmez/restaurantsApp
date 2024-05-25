@@ -159,6 +159,8 @@ class AuthController extends BaseController {
     });
   }
 
+
+
   ///Get storage images functions
 
   Future<String> _getOfferImageUrl({required String imageUrl}) async {
