@@ -10,6 +10,7 @@ import 'package:restaurant_app/core/extension/num_x.dart';
 import 'package:restaurant_app/presentation/base/base_screen.dart';
 
 import '../../controller/menu/menu.dart';
+import '../../model/restaurant/restaurant.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
   const RestaurantDetailScreen({Key? key}) : super(key: key);
@@ -28,6 +29,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Restaurant restaurant = Get.arguments;
+    print(restaurant.name);
     return BaseScreen(
       hasScrollable: true,
       mobile: Column(

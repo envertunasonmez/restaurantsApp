@@ -4,6 +4,7 @@ import 'package:restaurant_app/presentation/auth/forget_password/forget_password
 import 'package:restaurant_app/presentation/auth/forget_password/success.dart';
 import 'package:restaurant_app/presentation/auth/main/auth_main.dart';
 import 'package:restaurant_app/presentation/home/home_screen.dart';
+import 'package:restaurant_app/presentation/main/main_screen.dart';
 import 'package:restaurant_app/presentation/onboarding/first_screen.dart';
 import 'package:restaurant_app/presentation/restaurant_detail/restaurant_detail_screen.dart';
 
@@ -15,6 +16,7 @@ class AppRoutes {
   static Map<String, Widget Function(BuildContext)> routes = {
     AppPages.authMain: (_) => const AuthMainScreen(),
     AppPages.home: (_) => const HomeScreen(),
+    AppPages.main: (_) => const MainScreen(),
     AppPages.onBoardingPageFirst: (_) => const OnBoardingPageFirst(),
     AppPages.onBoardingPageSecond: (_) => const OnBoardingPageSecond(),
     AppPages.onBoardingPageThird: (_) => const OnBoardingPageThird(),
@@ -28,6 +30,7 @@ class AppRoutes {
 class AppPages {
   static String authMain = '/authMain';
   static String home = '/home';
+  static String main = '/main';
   static String onBoardingPageFirst = '/onBoardingPageFirst';
   static String onBoardingPageSecond = '/onBoardingPageSecond';
   static String onBoardingPageThird = '/onBoardingPageThird';
