@@ -10,6 +10,7 @@ import 'package:restaurant_app/core/constant/radius.dart';
 import 'package:restaurant_app/core/constant/static_asset.dart';
 import 'package:restaurant_app/core/extension/num_x.dart';
 import 'package:restaurant_app/presentation/base/base_screen.dart';
+import 'package:restaurant_app/route/routes.dart';
 
 import '../../firebase_options.dart';
 
@@ -310,7 +311,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   shrinkWrap: true,
                   itemBuilder: (_, index) {
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () => Get.toNamed(
+                        AppPages.restaurantDetailScreen,
+                      ),
                       child: Container(
                         margin: 4.w.pBottom,
                         height: 12.h,
