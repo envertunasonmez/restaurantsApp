@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/controller/auth/auth_controller.dart';
+import 'package:restaurant_app/controller/menu/menu.dart';
 import 'package:restaurant_app/core/constant/color.dart';
 import 'package:restaurant_app/core/constant/radius.dart';
 import 'package:restaurant_app/core/constant/static_asset.dart';
@@ -16,6 +17,7 @@ import '../../cache/cache.dart';
 import '../../firebase_options.dart';
 
 var ac = Get.find<AuthController>();
+var mc = Get.find<AppMenuController>();
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           email: AppCache.getValue(key: 'userEmail') ?? 'batu@test.com');
       await ac.getOffers();
       await ac.getRestaurants();
+      await mc.getRecommendedFoods();
     });
     super.initState();
   }
@@ -201,80 +204,103 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                         2.yh,
-                        SizedBox(
-                          height: 26.h,
-                          width: 90.w,
-                          child: ListView.builder(
-                              itemCount: 5,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (_, index) {
-                                return Container(
-                                  margin: 4.w.pRight,
-                                  height: 26.h,
-                                  width: 46.w,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Get.theme.colorScheme.primary,
-                                    ),
-                                    borderRadius: BorderRadius.circular(
-                                      AppRadius.cardRadius * 2,
-                                    ),
-                                  ),
-                                  child: Padding(
-                                    padding: 2.w.pAll,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(
-                                              AppRadius.cardRadius * 2,
-                                            ),
-                                            topRight: Radius.circular(
-                                              AppRadius.cardRadius * 2,
-                                            ),
-                                          ),
-                                          child: Image.asset(
-                                            StaticAssets.chickenBiryani,
-                                          ),
-                                          //Image.network(src),
-                                        ),
-                                        2.yh,
-                                        Text(
-                                          'Chicken Biryani',
-                                          style: Get
-                                              .theme.textTheme.labelMedium!
-                                              .copyWith(
-                                            color: ColorConstants.black,
-                                          ),
-                                        ),
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                              StaticAssets.location,
-                                              height: 4.w,
-                                            ),
-                                            2.xw,
-                                            Expanded(
-                                              child: Text(
-                                                'Ambrosia Hotel & Restaurant',
-                                                style: Get
-                                                    .theme.textTheme.labelSmall!
-                                                    .copyWith(
-                                                  color: ColorConstants.grey,
+                        GetBuilder<AppMenuController>(
+                            id: 'menuController',
+                            builder: (mc) {
+                              return mc.isLoading
+                                  ? const Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : SizedBox(
+                                      height: 26.h,
+                                      width: 90.w,
+                                      child: ListView.builder(
+                                          itemCount: mc.recommendedFoods.length,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.horizontal,
+                                          itemBuilder: (_, index) {
+                                            return Container(
+                                              margin: 4.w.pRight,
+                                              height: 26.h,
+                                              width: 46.w,
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: Get.theme.colorScheme
+                                                      .primary,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  AppRadius.cardRadius * 2,
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              }),
-                        ),
+                                              child: Padding(
+                                                padding: 2.w.pAll,
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        topLeft:
+                                                            Radius.circular(
+                                                          AppRadius.cardRadius *
+                                                              2,
+                                                        ),
+                                                        topRight:
+                                                            Radius.circular(
+                                                          AppRadius.cardRadius *
+                                                              2,
+                                                        ),
+                                                      ),
+                                                      child: Image.asset(
+                                                        StaticAssets
+                                                            .chickenBiryani,
+                                                      ),
+                                                      //Image.network(src),
+                                                    ),
+                                                    2.yh,
+                                                    Text(
+                                                      mc.recommendedFoods[index]
+                                                              .name ??
+                                                          '',
+                                                      style: Get.theme.textTheme
+                                                          .labelMedium!
+                                                          .copyWith(
+                                                        color: ColorConstants
+                                                            .black,
+                                                      ),
+                                                    ),
+                                                    Row(
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          StaticAssets.location,
+                                                          height: 4.w,
+                                                        ),
+                                                        2.xw,
+                                                        Expanded(
+                                                          child: Text(
+                                                            'Ambrosia Hotel & Restaurant',
+                                                            style: Get
+                                                                .theme
+                                                                .textTheme
+                                                                .labelSmall!
+                                                                .copyWith(
+                                                              color:
+                                                                  ColorConstants
+                                                                      .grey,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                    );
+                            }),
                         4.yh,
                         Row(
                           children: [

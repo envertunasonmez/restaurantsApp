@@ -12,6 +12,8 @@ import 'package:restaurant_app/presentation/base/base_screen.dart';
 import '../../controller/menu/menu.dart';
 import '../../model/restaurant/restaurant.dart';
 
+Restaurant restaurant = Get.arguments;
+
 class RestaurantDetailScreen extends StatefulWidget {
   const RestaurantDetailScreen({Key? key}) : super(key: key);
 
@@ -23,13 +25,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   @override
   void initState() {
     var menuController = Get.find<AppMenuController>();
-    menuController.getMenu();
+    menuController.getMenu(restaurantId: restaurant.id ?? -1);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    Restaurant restaurant = Get.arguments;
     print(restaurant.name);
     return BaseScreen(
       hasScrollable: true,
